@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Counter from "./components/counter/Counter";
+import Todo from "./components/todo/Todo";
+// import { createStore } from "redux" js kütüpanesinden geliyor.üstü çizili olmasının sebebi redux toolkit kullanmaya yönlendiriyor. üstü çizik olması çalışmasına engel deil. aşagıdaki gibi kullanarak as ile ismi değiştiriyoruz.
+// import { legacy_createStore as createStore } from "redux"
+// import reducer from "./redux"
+import { Provider } from "react-redux";
+import { store } from "./redux"; //redux klasörünün altında ki index i kast ettik.
 
 function App() {
+  //? Store olusturduk.
+  // const store = createStore(reducer)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {/* Store ile tum uygulamayi sarmalladik */}
+      <Provider store={store}>
+        <Counter />
+        <Todo />
+      </Provider>
     </div>
   );
 }
